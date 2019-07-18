@@ -14,3 +14,51 @@ function memoize(func) {
         }
     }
 }
+
+
+/**
+ * Improved version of memoize
+ * In this n number of parameters are supported to memoize
+ * each memoize function maintain it's own cache
+ * @param {function} - function to be memoized
+ * @returns {function} memoized function
+ */
+function memoize(func) {
+    const _cached = function (...arg) {
+        return _memoize(...arg);
+    }
+    _cached.cache = {};
+    const _memoize = function(...arg) {
+        let args = [...arg].toString();
+        if (_cached.cache[args]) {
+            return _cached.cache[args];
+        } else {
+            let result = func(...arg);
+            _cached.cache[args] = result;
+            return result;
+        }
+    }
+    return _cached;
+}
+
+// var myName = memoize(function(fname, lname) {
+// 	return `hello ${fname} ${lname}`;
+// })
+// var yourName = memoize(function(fname, lname) {
+// 	return `hello ${fname} ${lname}`;
+// })
+
+
+// console.log(myName("dharmendra", "patel"));
+// console.log(myName("dharmendra", "patel"));
+// console.log(myName.cache);
+// console.log(myName("rahul", "singh"));
+// console.log(myName("rahul", "singh"));
+// console.log(myName.cache);
+
+// console.log(yourName("amit", "sharma"));
+// console.log(yourName("amit", "sharma"));
+// console.log(yourName.cache);
+// console.log(yourName("aman", "jagga"));
+// console.log(yourName("aman", "jagga"));
+// console.log(yourName.cache);

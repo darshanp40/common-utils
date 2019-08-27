@@ -1,14 +1,17 @@
-let CONSTANT = 5;
 function sum(...args) {
     return args.reduce((result, item) => {
         return result + item;
     });
 }
-function magic(fn) {
+
+function meSum(a,b,c) {return a+b+c};
+
+function magic(fn, paramLength) {
     let params = [];
+    paramLength = fn.length || paramLength;
     return function magicEx(...args) {
         let context = this;
-        if (params.length + args.length < CONSTANT) {
+        if (params.length + args.length < paramLength) {
             params = [ ...params, ...args ];
             return magicEx.bind(context);
         } else {
@@ -20,9 +23,10 @@ function magic(fn) {
 }
 
 /* 
-    Define the CONSTANT value first
-    let sumMagic = magic(sum);
+    let sumMagic = magic(sum, 5);
     sumMagic(1)(6)(3)(4)(6)
     sumMagic(1)(6)(3)(4,6)
     sumMagic(1)(6,3)(4,6)
+    
+    let msumMagic = magic(meSum);
 */

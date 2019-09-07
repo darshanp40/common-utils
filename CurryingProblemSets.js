@@ -30,3 +30,25 @@ function magic(fn, paramLength) {
     
     let msumMagic = magic(meSum);
 */
+
+
+/**
+ * This is simple way of currying the function
+ * @param { Function } f - function to be curried
+ * @param { Number } f - Expected parameters length
+ * @param { Object } c - function context
+ */
+const curry = function (f, l, c) {
+	return function _magic(...args) {
+		return args.length === (f.length || l) ? f.call(c, ...args) : _magic.bind(c, ...args);
+	}
+}
+
+// Examples:
+// const testCurry = curry((a, b, c, d) => a + b + c + d);
+// testCurry(1)()()(2, 3)()()(4);
+
+// let sumMagic = curry(sum, 5);
+// sumMagic(1)(6)(3)(4)(6)
+// sumMagic(1)(6)(3)(4,6)
+// sumMagic(1)(6,3)(4,6)

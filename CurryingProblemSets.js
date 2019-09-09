@@ -35,7 +35,7 @@ function magic(fn, paramLength) {
 /**
  * This is simple way of currying the function
  * @param { Function } f - function to be curried
- * @param { Number } f - Expected parameters length
+ * @param { Number } l - Expected parameters length
  * @param { Object } c - function context
  */
 const curry = function (f, l, c) {

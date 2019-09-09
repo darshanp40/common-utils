@@ -21,9 +21,10 @@ function memoize(func) {
  * In this n number of parameters are supported to memoize
  * each memoize function maintain it's own cache
  * @param {function} - function to be memoized
+ * @param {object} - context to be used for function to be memoized
  * @returns {function} memoized function
  */
-function memoize(func) {
+function memoize(func, context) {
     const _cached = function (...arg) {
         return _memoize(...arg);
     }
@@ -33,7 +34,7 @@ function memoize(func) {
         if (_cached.cache[args]) {
             return _cached.cache[args];
         } else {
-            let result = func(...arg);
+            let result = func.apply(context, arg);
             _cached.cache[args] = result;
             return result;
         }

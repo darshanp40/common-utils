@@ -35,9 +35,37 @@ NOTE : If any where image url is send as prod, Use Images url from S3
 3. AppSidebar
 
 ```javascript
-import foobar
+/* 
+PROPS to the sidebar:
+1. config - SIDEBAR_CONFIG = [
+    {
+        title: '', // Section Title - if you don't have the title then leave it blank
+        config: [
+            {
+                name: '', // Module name
+                icon: '', // Module icon
+                path: '', // Absolute route path
+                subItems: [
+                    {
+                        name: '', // Module name
+                        icon: '', // Module icon
+                        path: '', //absolute route path
+                        subItems: [],
+                    },
+                ],
+            }
+        ],
+    }
+];
+2. clickHandler - a custom click handler onto the menu-item
+3. sidebarClass - a custom class to be applied on sidebar to have changes in CSS
 
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
+SASS variables to be set:
+$sidebar_width: 240px;
+$sidebar_backgroud:#f2f2f2;
+$sidebar_hov_bg: #ffffff;
+$sidebar_color:#2a2a2a;
+$sidebar_active_link: #0e64f0;
+
+*/
 ```

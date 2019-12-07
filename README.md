@@ -40,15 +40,18 @@ PROPS to the sidebar:
 1. config - SIDEBAR_CONFIG = [
     {
         title: '', // Section Title - if you don't have the title then leave it blank
+        separator: true, // to show the separator between two sections
         config: [
             {
                 name: '', // Module name
                 icon: '', // Module icon
+                iconPack: 'mdi', // icon pack to be used - default is z-icon (Zeta's internal icons)
                 path: '', // Absolute route path
                 subItems: [
                     {
                         name: '', // Module name
                         icon: '', // Module icon
+                        iconPack: 'mdi',
                         path: '', //absolute route path
                         subItems: [],
                     },
@@ -58,7 +61,7 @@ PROPS to the sidebar:
     }
 ];
 2. clickHandler - a custom click handler onto the menu-item
-3. sidebarClass - a custom class to be applied on sidebar to have changes in CSS
+3. sidebarClass - a custom class to be applied on sidebar to have changes in CSS of the sidebar
 
 SASS variables to be set:
 $sidebar_width: 240px;
